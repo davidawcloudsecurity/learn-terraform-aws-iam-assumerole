@@ -2,9 +2,9 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 
-# Please check if this match your platform-policy-new1.json
-resource "aws_iam_policy" "platform_policy_new1" {
-  name        = "example_policy"
+# Please check if this matches your platform-policy-new1.json
+resource "aws_iam_policy" "platform_policy_new_01" {
+  name        = "sample_policy_01"
   description = "Example IAM Policy"
   policy      = jsonencode({
     "Version": "2012-10-17",
@@ -88,8 +88,8 @@ resource "aws_iam_policy" "platform_policy_new1" {
   })
 }
 
-resource "aws_iam_policy" "platform_policy_sample_2" {
-  name        = "example_policy"
+resource "aws_iam_policy" "platform_policy_sample_02" {
+  name        = "sample_policy_02"
   description = "Example IAM Policy"
   policy      = jsonencode({
     "Version": "2012-10-17",
@@ -226,6 +226,99 @@ resource "aws_iam_policy" "platform_policy_sample_2" {
         ],
         "Effect": "Allow",
         "Resource": "*"
+      }
+    ]
+  })
+}
+
+# Please check if this matches your platform-policy-sample-3.json
+
+resource "aws_iam_policy" "platform_policy_sample_03" {
+  name        = "sample_policy_03"
+  description = "Example IAM Policy"
+  policy      = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "rds:CreateDBCluster"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:cluster-pg:*",
+          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:cluster:*",
+          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:og:*",
+          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:subgrp:*"
+        ]
+      },
+      {
+        "Sid": "AllowRunInstance",
+        "Action": [
+          "ec2:RunInstances"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:instance/*",
+          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:key-pair/*",
+          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:network-interface/*",
+          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:security-group/*",
+          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:subnet/*",
+          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:volume/*",
+          "arn:aws:ec2:ap-southeast-1::image/*"
+        ]
+      },
+      {
+        "Action": [
+          "eks:DescribeCluster"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:eks:ap-southeast-1:${var.aws_account_id}:cluster/*"
+      },
+      {
+        "Action": [
+          "transfer:*"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:transfer:ap-southeast-1:${var.aws_account_id}:server/*"
+      }
+    ]
+  })
+}
+
+# Please check if this matches your platform-policy-sample-4.json
+resource "aws_iam_policy" "platform_sample_policy_04" {
+  name        = "sample_policy_04"
+  description = "Example IAM Policy"
+  policy      = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "ram:*",
+          "events:*",
+          "codeartifact:*"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Action": [
+          "elasticache:AddTagsToResource",
+          "elasticache:CreateCacheSubnetGroup",
+          "elasticache:CreateCacheCluster",
+          "elasticache:DescribeCacheSubnetGroups"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:elasticache:ap-southeast-1:${var.aws_account_id}:*:*"
+      },
+      {
+        "Action": [
+          "rds:CreateDBSubnetGroup",
+          "rds:DescribeDBSubnetGroups",
+          "rds:ListTagsForResource"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:subgrp:*"
       }
     ]
   })
