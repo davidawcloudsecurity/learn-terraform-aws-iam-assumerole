@@ -326,7 +326,8 @@ resource "aws_iam_policy" "platform_policy_sample_04" {
 
 resource "aws_iam_role" "project_trust_platform" {
   name = "project-trust-platform-role"
-  assume_role_policy = jsonencode({
+  assume_role_policy = <<EOF
+{
     "Version": "2012-10-17",
     "Statement": [
       {
@@ -337,7 +338,8 @@ resource "aws_iam_role" "project_trust_platform" {
         "Action": "sts:AssumeRole"
       }
     ]
-  })
+  }
+EOF
 }
 
 resource "aws_iam_policy_attachment" "attach_example_policy_01" {
