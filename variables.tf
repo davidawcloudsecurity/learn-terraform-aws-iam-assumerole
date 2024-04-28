@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "aws_account_id" {
   description = "The AWS account ID where resources will be created."
   type        = string
-  default     = "999999999999"
+  default     = "767397984419"
 }
 
 variable "example_tag" {
