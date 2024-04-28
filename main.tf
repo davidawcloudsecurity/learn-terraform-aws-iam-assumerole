@@ -286,7 +286,7 @@ resource "aws_iam_policy" "platform_policy_sample_03" {
 }
 
 # Please check if this matches your platform-policy-sample-4.json
-resource "aws_iam_policy" "platform_sample_policy_04" {
+resource "aws_iam_policy" "platform_policy_sample_04" {
   name        = "sample_policy_04"
   description = "Example IAM Policy"
   policy      = jsonencode({
@@ -322,4 +322,56 @@ resource "aws_iam_policy" "platform_sample_policy_04" {
       }
     ]
   })
+}
+
+resource "aws_iam_role" "project_trust_platform" {
+  name = "project-trust-platform-role"
+}
+
+resource "aws_iam_policy_attachment" "attach_example_policy_01" {
+  name       = "example_policy_attachment_01"
+  roles      = [aws_iam_role.project_trust_platform.name]
+  policy_arn = aws_iam_policy.platform_policy_new_01.arn
+}
+
+resource "aws_iam_policy_attachment" "attach_example_policy_02" {
+  name       = "example_policy_attachment_02"
+  roles      = [aws_iam_role.project_trust_platform.name]
+  policy_arn = aws_iam_policy.platform_policy_sample_02.arn
+}
+
+resource "aws_iam_policy_attachment" "attach_example_policy_03" {
+  name       = "example_policy_attachment_03"
+  roles      = [aws_iam_role.project_trust_platform.name]
+  policy_arn = aws_iam_policy.platform_policy_sample_03.arn
+}
+
+resource "aws_iam_policy_attachment" "attach_example_policy_04" {
+  name       = "example_policy_attachment_04"
+  roles      = [aws_iam_role.project_trust_platform.name]
+  policy_arn = aws_iam_policy.platform_policy_sample_04.arn
+}
+
+resource "aws_iam_policy_attachment" "attach_awsquicksightlistiam" {
+  name       = "project-trust-platform-role"
+  roles      = [aws_iam_role.project_trust_platform.name]
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSQuickSightListIAM"
+}
+
+# Attach the AWSResourceAccessManagerResourceShareParticipantAccess policy to the IAM role
+resource "aws_iam_role_policy_attachment" "attach-ram" {
+  role       = aws_iam_role.project_trust_platform.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSResourceAccessManagerResourceShareParticipantAccess"
+}
+
+# Attach the PowerUserAccess policy to the IAM role
+resource "aws_iam_role_policy_attachment" "attach-power-user" {
+  role       = aws_iam_role.project_trust_platform.name
+  policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
+}
+
+# Attach the SecretsManagerReadWrite policy to the IAM role
+resource "aws_iam_role_policy_attachment" "attach-secrets-manager" {
+  role       = aws_iam_role.project_trust_platform.name
+  policy_arn = "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
 }
