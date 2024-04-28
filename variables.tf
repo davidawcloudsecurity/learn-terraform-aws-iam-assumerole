@@ -10,6 +10,18 @@ variable "aws_account_id" {
   default     = "767397984419"
 }
 
+variable "project_account_id" {
+  description = "The AWS account ID where resources will be created."
+  type        = string
+  default     = "767397984419"
+}
+
+variable "platform_account_id" {
+  description = "The AWS account ID where resources will be created."
+  type        = string
+  default     = "767397984419"
+}
+
 variable "example_tag" {
   description = "An example tag to apply to resources."
   type        = map(string)
