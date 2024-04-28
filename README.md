@@ -9,6 +9,9 @@ alias tfd="terraform destroy --auto-approve"
 alias tfm="terraform init; terraform fmt; terraform validate; terraform plan"
 ```
 ## https://developer.hashicorp.com/terraform/install
-Check OS version for Linux
+Install if running at cloudshell
 ```ruby
-cat /etc/os-release
+sudo yum install -y yum-utils shadow-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+```
