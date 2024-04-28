@@ -2,7 +2,8 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 
-resource "aws_iam_policy" "example_policy" {
+# Please check if this match your platform-policy-new1.json
+resource "aws_iam_policy" "platform_policy_new1" {
   name        = "example_policy"
   description = "Example IAM Policy"
   policy      = jsonencode({
@@ -51,14 +52,14 @@ resource "aws_iam_policy" "example_policy" {
           "ec2:RevokeSecurityGroup*"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:ec2:ap-southeast-1:var.aws_account_id:*/*"
+        "Resource": "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:*/*"
       },
       {
         "Action": [
           "codecommit:*"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:codecommit:ap-southeast-1:var.aws_account_id:*"
+        "Resource": "arn:aws:codecommit:ap-southeast-1:${var.aws_account_id}:*"
       },
       {
         "Action": [
@@ -82,6 +83,149 @@ resource "aws_iam_policy" "example_policy" {
         ],
         "Effect": "Allow",
         "Resource": "arn:aws:s3:::*"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_policy" "platform_policy_sample_2" {
+  name        = "example_policy"
+  description = "Example IAM Policy"
+  policy      = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "transfer:*",
+          "dynamodb:*"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Action": [
+          "elasticache:DescribeCacheClusters",
+          "elasticache:ListTagsForResource"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:elasticache:ap-southeast-1:${var.aws_account_id}:cluster:*"
+      },
+      {
+        "Action": [
+          "rds:DescribeDBClusters"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:cluster:*"
+      },
+      {
+        "Action": [
+          "rds:DescribeGlobalClusters"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:rds::${var.aws_account_id}:global-cluster:*"
+      },
+      {
+        "Action": [
+          "rds:CreateDBInstance"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:db:*",
+          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:subgrp:*"
+        ]
+      },
+      {
+        "Action": [
+          "lambda:CreateFunction",
+          "lambda:GetFunction",
+          "lambda:ListVersionsByFunction",
+          "lambda:GetFunctionCodeSigningConfig",
+          "lambda:AddPermission",
+          "lambda:GetPolicy"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:lambda:ap-southeast-1:${var.aws_account_id}:function:*"
+      },
+      {
+        "Action": [
+          "rds:DescribeDBInstances"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:db:*"
+      },
+      {
+        "Action": [
+          "eks:CreateFargateProfile"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:eks:ap-southeast-1:${var.aws_account_id}:cluster/*"
+      },
+      {
+        "Action": [
+          "eks:DescribeFargateProfile"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:eks:ap-southeast-1:${var.aws_account_id}:fargateprofile/*/platform_service/*"
+      },
+      {
+        "Action": [
+          "eks:DescribeFargateProfile"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:eks:ap-southeast-1:${var.aws_account_id}:fargateprofile/*/kube-system/*"
+      },
+      {
+        "Action": [
+          "secretsmanager:*",
+          "cloudformation:Create*",
+          "cloudformation:Describe*",
+          "cloudformation:Delete*",
+          "cloudformation:ExecuteChangeSet"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Action": [
+          "cloudwatch:PutMetricData",
+          "ds:CreateComputer",
+          "ds:DescribeDirectories",
+          "logs:*",
+          "ssm:*",
+          "ec2messages:*",
+          "ecr-public:*",
+          "sts:*"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Action": "iam:CreateServiceLinkedRole",
+        "Condition": {
+          "StringLike": {
+            "iam:AWSServiceName": "ssm.amazonaws.com"
+          }
+        },
+        "Effect": "Allow",
+        "Resource": "arn:aws:iam::*:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM*"
+      },
+      {
+        "Action": [
+          "iam:DeleteServiceLinkedRole",
+          "iam:GetServiceLinkedRoleDeletionStatus"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:iam::*:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM*"
+      },
+      {
+        "Action": [
+          "ssmmessages:CreateControlChannel",
+          "ssmmessages:CreateDataChannel",
+          "ssmmessages:OpenControlChannel",
+          "ssmmessages:OpenDataChannel"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
       }
     ]
   })
