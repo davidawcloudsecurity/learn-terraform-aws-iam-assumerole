@@ -369,14 +369,13 @@ resource "aws_iam_policy_attachment" "attach_example_policy_04" {
 resource "aws_iam_policy_attachment" "attach_awsquicksightlistiam" {
   name       = "project-trust-platform-role"
   roles      = [aws_iam_role.project_trust_platform.name]
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSQuickSightListIAM"
+  policy_arn = "arn:aws:iam::aws:policy/AWSQuickSightListIAM"
 }
 
 # Attach the AWSResourceAccessManagerResourceShareParticipantAccess policy to the IAM role
 resource "aws_iam_role_policy_attachment" "attach-ram" {
   role       = aws_iam_role.project_trust_platform.name
   policy_arn = "arn:aws:iam::aws:policy/AWSResourceAccessManagerResourceShareParticipantAccess"
-#  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSResourceAccessManagerResourceShareParticipantAccess"
 }
 
 # Attach the PowerUserAccess policy to the IAM role
