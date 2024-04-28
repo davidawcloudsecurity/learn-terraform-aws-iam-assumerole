@@ -326,7 +326,7 @@ resource "aws_iam_policy" "platform_policy_sample_04" {
 
 resource "aws_iam_role" "project_trust_platform" {
   name = "project-trust-platform-role"
-force_detach_policies = true
+  force_detach_policies = true
   assume_role_policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
@@ -334,6 +334,27 @@ force_detach_policies = true
         "Effect": "Allow",
         "Principal": {
           "AWS": "arn:aws:iam::${var.aws_account_id}:root"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
+        },
+        "Action": "sts:AssumeRole"
+      }
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::${var.project_account_id}:root"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
+        },
+        "Action": "sts:AssumeRole"
+      }
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "codebuild.amazonaws.com"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
+        },
+        "Action": "sts:AssumeRole"
+      }
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "codepipline.amazonaws.com"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
         },
         "Action": "sts:AssumeRole"
       }
