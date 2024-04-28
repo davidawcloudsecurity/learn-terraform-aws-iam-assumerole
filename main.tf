@@ -51,14 +51,14 @@ resource "aws_iam_policy" "example_policy" {
           "ec2:RevokeSecurityGroup*"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:ec2:ap-southeast-1:var.account_id:*/*"
+        "Resource": "arn:aws:ec2:ap-southeast-1:var.aws_account_id:*/*"
       },
       {
         "Action": [
           "codecommit:*"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:codecommit:ap-southeast-1:var.account_id:*"
+        "Resource": "arn:aws:codecommit:ap-southeast-1:var.aws_account_id:*"
       },
       {
         "Action": [
