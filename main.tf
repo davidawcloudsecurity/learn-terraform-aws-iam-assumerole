@@ -326,21 +326,18 @@ resource "aws_iam_policy" "platform_policy_sample_04" {
 
 resource "aws_iam_role" "project_trust_platform" {
   name = "project-trust-platform-role"
-  # Define the permissions for the IAM role
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
+  assume_role_policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::${var.aws_account_id}:root"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
+        },
+        "Action": "sts:AssumeRole"
+      }
+    ]
+  })
 }
 
 resource "aws_iam_policy_attachment" "attach_example_policy_01" {
