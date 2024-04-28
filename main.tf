@@ -326,13 +326,13 @@ resource "aws_iam_policy" "platform_policy_sample_04" {
 
 resource "aws_iam_role" "project_trust_platform" {
   name = "project-trust-platform-role"
-assume_role_policy = jsonencode({
+  assume_role_policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
       {
         "Effect": "Allow",
         "Principal": {
-          "AWS": "arn:aws:iam::${var.aws_account_id:root"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
+          "AWS": "arn:aws:iam::${var.aws_account_id}:root"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
         },
         "Action": "sts:AssumeRole"
       }
