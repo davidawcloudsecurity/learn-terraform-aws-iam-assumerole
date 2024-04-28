@@ -364,7 +364,6 @@ tags = var.example_tag
 }
 
 resource "aws_iam_policy_attachment" "attach_example_policy_01" {
-  name       = "example_policy_attachment_01"
   roles      = [aws_iam_role.project_trust_platform.name]
   policy_arn = aws_iam_policy.platform_policy_new_01.arn
 }
@@ -388,7 +387,6 @@ resource "aws_iam_policy_attachment" "attach_example_policy_04" {
 }
 
 resource "aws_iam_policy_attachment" "attach_awsquicksightlistiam" {
-  name       = "project-trust-platform-role"
   roles      = [aws_iam_role.project_trust_platform.name]
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSQuickSightListIAM"
 }
