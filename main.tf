@@ -354,7 +354,7 @@ resource "aws_iam_role" "project_trust_platform" {
       {
         "Effect": "Allow",
         "Principal": {
-          "Service": "codepipline.amazonaws.com"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
+          "Service": "codepipeline.amazonaws.com"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
         },
         "Action": "sts:AssumeRole"
       }
