@@ -338,6 +338,9 @@ resource "aws_iam_role" "project_trust_platform" {
       }
     ]
   })
+tags = {
+    tag-key = var.example_tag
+  }
 }
 
 resource "aws_iam_policy_attachment" "attach_example_policy_01" {
