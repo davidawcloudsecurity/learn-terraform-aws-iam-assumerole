@@ -144,28 +144,28 @@ resource "aws_iam_policy" "platform_policy_sample_02" {
           "lambda:GetPolicy"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:lambda:ap-southeast-1:${project_account_id}:function:*"
+        "Resource": "arn:aws:lambda:ap-southeast-1:${var.project_account_id}:function:*"
       },
       {
         "Action": [
           "rds:DescribeDBInstances"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:rds:ap-southeast-1:${project_account_id}:db:*"
+        "Resource": "arn:aws:rds:ap-southeast-1:${var.project_account_id}:db:*"
       },
       {
         "Action": [
           "eks:CreateFargateProfile"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:eks:ap-southeast-1:${project_account_id}:cluster/*"
+        "Resource": "arn:aws:eks:ap-southeast-1:${var.project_account_id}:cluster/*"
       },
       {
         "Action": [
           "eks:DescribeFargateProfile"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:eks:ap-southeast-1:${project_account_id}:fargateprofile/*/platform_service/*"
+        "Resource": "arn:aws:eks:ap-southeast-1:${var.project_account_id}:fargateprofile/*/platform_service/*"
       },
       {
         "Action": [
