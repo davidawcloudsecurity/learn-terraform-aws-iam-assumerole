@@ -4,7 +4,7 @@ provider "aws" {
 
 # Please check if this matches your platform-policy-new1.json
 resource "aws_iam_policy" "platform_policy_new_01" {
-  name        = "sample_policy_01"
+  name        = "policy-1"
   description = "Example IAM Policy"
   policy      = jsonencode({
     "Version": "2012-10-17",
@@ -89,7 +89,7 @@ resource "aws_iam_policy" "platform_policy_new_01" {
 }
 
 resource "aws_iam_policy" "platform_policy_sample_02" {
-  name        = "sample_policy_02"
+  name        = "policy-2"
   description = "Example IAM Policy"
   policy      = jsonencode({
     "Version": "2012-10-17",
@@ -234,7 +234,7 @@ resource "aws_iam_policy" "platform_policy_sample_02" {
 # Please check if this matches your platform-policy-sample-3.json
 
 resource "aws_iam_policy" "platform_policy_sample_03" {
-  name        = "sample_policy_03"
+  name        = "policy-3"
   description = "Example IAM Policy"
   policy      = jsonencode({
     "Version": "2012-10-17",
@@ -287,7 +287,7 @@ resource "aws_iam_policy" "platform_policy_sample_03" {
 
 # Please check if this matches your platform-policy-sample-4.json
 resource "aws_iam_policy" "platform_policy_sample_04" {
-  name        = "sample_policy_04"
+  name        = "policy-4"
   description = "Example IAM Policy"
   policy      = jsonencode({
     "Version": "2012-10-17",
