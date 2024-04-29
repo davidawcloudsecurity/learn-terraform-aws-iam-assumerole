@@ -4,12 +4,6 @@ variable "aws_region" {
   default     = "ap-southeast-1"
 }
 
-variable "aws_account_id" {
-  description = "The AWS account ID where resources will be created."
-  type        = string
-  default     = "767397984419"
-}
-
 variable "project_account_id" {
   description = "The AWS account ID where resources will be created."
   type        = string
