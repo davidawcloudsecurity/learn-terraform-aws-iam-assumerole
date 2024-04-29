@@ -52,14 +52,14 @@ resource "aws_iam_policy" "platform_policy_new_01" {
           "ec2:RevokeSecurityGroup*"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:*/*"
+        "Resource": "arn:aws:ec2:ap-southeast-1:${var.project_account_id}:*/*"
       },
       {
         "Action": [
           "codecommit:*"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:codecommit:ap-southeast-1:${var.aws_account_id}:*"
+        "Resource": "arn:aws:codecommit:ap-southeast-1:${var.project_account_id}:*"
       },
       {
         "Action": [
@@ -108,21 +108,21 @@ resource "aws_iam_policy" "platform_policy_sample_02" {
           "elasticache:ListTagsForResource"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:elasticache:ap-southeast-1:${var.aws_account_id}:cluster:*"
+        "Resource": "arn:aws:elasticache:ap-southeast-1:${var.project_account_id}:cluster:*"
       },
       {
         "Action": [
           "rds:DescribeDBClusters"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:cluster:*"
+        "Resource": "arn:aws:rds:ap-southeast-1:${var.project_account_id}:cluster:*"
       },
       {
         "Action": [
           "rds:DescribeGlobalClusters"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:rds::${var.aws_account_id}:global-cluster:*"
+        "Resource": "arn:aws:rds::${var.project_account_id}:global-cluster:*"
       },
       {
         "Action": [
@@ -130,8 +130,8 @@ resource "aws_iam_policy" "platform_policy_sample_02" {
         ],
         "Effect": "Allow",
         "Resource": [
-          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:db:*",
-          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:subgrp:*"
+          "arn:aws:rds:ap-southeast-1:${var.project_account_id}:db:*",
+          "arn:aws:rds:ap-southeast-1:${var.project_account_id}:subgrp:*"
         ]
       },
       {
@@ -144,35 +144,35 @@ resource "aws_iam_policy" "platform_policy_sample_02" {
           "lambda:GetPolicy"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:lambda:ap-southeast-1:${var.aws_account_id}:function:*"
+        "Resource": "arn:aws:lambda:ap-southeast-1:${project_account_id}:function:*"
       },
       {
         "Action": [
           "rds:DescribeDBInstances"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:db:*"
+        "Resource": "arn:aws:rds:ap-southeast-1:${project_account_id}:db:*"
       },
       {
         "Action": [
           "eks:CreateFargateProfile"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:eks:ap-southeast-1:${var.aws_account_id}:cluster/*"
+        "Resource": "arn:aws:eks:ap-southeast-1:${project_account_id}:cluster/*"
       },
       {
         "Action": [
           "eks:DescribeFargateProfile"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:eks:ap-southeast-1:${var.aws_account_id}:fargateprofile/*/platform_service/*"
+        "Resource": "arn:aws:eks:ap-southeast-1:${project_account_id}:fargateprofile/*/platform_service/*"
       },
       {
         "Action": [
           "eks:DescribeFargateProfile"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:eks:ap-southeast-1:${var.aws_account_id}:fargateprofile/*/kube-system/*"
+        "Resource": "arn:aws:eks:ap-southeast-1:${var.project_account_id}:fargateprofile/*/kube-system/*"
       },
       {
         "Action": [
@@ -272,14 +272,14 @@ resource "aws_iam_policy" "platform_policy_sample_03" {
           "eks:DescribeCluster"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:eks:ap-southeast-1:${var.aws_account_id}:cluster/*"
+        "Resource": "arn:aws:eks:ap-southeast-1:${var.project_account_id}:cluster/*"
       },
       {
         "Action": [
           "transfer:*"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:transfer:ap-southeast-1:${var.aws_account_id}:server/*"
+        "Resource": "arn:aws:transfer:ap-southeast-1:${var.project_account_id}:server/*"
       }
     ]
   })
@@ -309,7 +309,7 @@ resource "aws_iam_policy" "platform_policy_sample_04" {
           "elasticache:DescribeCacheSubnetGroups"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:elasticache:ap-southeast-1:${var.aws_account_id}:*:*"
+        "Resource": "arn:aws:elasticache:ap-southeast-1:${var.project_account_id}:*:*"
       },
       {
         "Action": [
@@ -318,7 +318,7 @@ resource "aws_iam_policy" "platform_policy_sample_04" {
           "rds:ListTagsForResource"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:subgrp:*"
+        "Resource": "arn:aws:rds:ap-southeast-1:${var.project_account_id}:subgrp:*"
       }
     ]
   })
@@ -333,7 +333,7 @@ resource "aws_iam_role" "project_trust_platform" {
       {
         "Effect": "Allow",
         "Principal": {
-          "AWS": "arn:aws:iam::${var.aws_account_id}:root"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
+          "AWS": "arn:aws:iam::${var.platform_account_id}:root"  # Replace YOUR_OTHER_ACCOUNT_ID with the ID of the other AWS account
         },
         "Action": "sts:AssumeRole"
       },
