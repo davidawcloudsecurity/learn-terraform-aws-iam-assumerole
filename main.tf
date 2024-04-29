@@ -245,10 +245,10 @@ resource "aws_iam_policy" "platform_policy_sample_03" {
         ],
         "Effect": "Allow",
         "Resource": [
-          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:cluster-pg:*",
-          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:cluster:*",
-          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:og:*",
-          "arn:aws:rds:ap-southeast-1:${var.aws_account_id}:subgrp:*"
+          "arn:aws:rds:ap-southeast-1:${var.project_account_id}:cluster-pg:*",
+          "arn:aws:rds:ap-southeast-1:${var.project_account_id}:cluster:*",
+          "arn:aws:rds:ap-southeast-1:${var.project_account_id}:og:*",
+          "arn:aws:rds:ap-southeast-1:${var.project_account_id}:subgrp:*"
         ]
       },
       {
@@ -258,12 +258,12 @@ resource "aws_iam_policy" "platform_policy_sample_03" {
         ],
         "Effect": "Allow",
         "Resource": [
-          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:instance/*",
-          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:key-pair/*",
-          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:network-interface/*",
-          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:security-group/*",
-          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:subnet/*",
-          "arn:aws:ec2:ap-southeast-1:${var.aws_account_id}:volume/*",
+          "arn:aws:ec2:ap-southeast-1:${var.project_account_id}:instance/*",
+          "arn:aws:ec2:ap-southeast-1:${var.project_account_id}:key-pair/*",
+          "arn:aws:ec2:ap-southeast-1:${var.project_account_id}:network-interface/*",
+          "arn:aws:ec2:ap-southeast-1:${var.project_account_id}:security-group/*",
+          "arn:aws:ec2:ap-southeast-1:${var.project_account_id}:subnet/*",
+          "arn:aws:ec2:ap-southeast-1:${var.project_account_id}:volume/*",
           "arn:aws:ec2:ap-southeast-1::image/*"
         ]
       },
