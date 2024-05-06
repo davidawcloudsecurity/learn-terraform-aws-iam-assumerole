@@ -15,7 +15,7 @@ sudo yum install -y yum-utils shadow-utils; sudo yum-config-manager --add-repo h
 ```
 
 ## How to Use Terraform Variables: Examples
-tfa -var project_account_id=<account_id> -var platform_account_id=<platform_account_id>
+tfa -var project_account_id=<project_account_id> -var platform_account_id=<platform_account_id>
 ```ruby
 tfa -var project_account_id=123456789012 -var platform_account_id=012987654321
 ```
