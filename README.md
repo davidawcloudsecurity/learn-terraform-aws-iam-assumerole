@@ -15,5 +15,7 @@ sudo yum install -y yum-utils shadow-utils; sudo yum-config-manager --add-repo h
 tfa -var project_account_id=<project_account_id> -var platform_account_id=<platform_account_id>
 ```ruby
 tfa -var project_account_id=123456789012 -var platform_account_id=012987654321
+# retrieve account number
+aws sts get-caller-identity --query Account --output text
 ```
 Resource - https://spacelift.io/blog/how-to-use-terraform-variables#variable-substitution-using-cli-and-tfvars
