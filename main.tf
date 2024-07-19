@@ -410,3 +410,43 @@ resource "aws_iam_role_policy_attachment" "attach-secrets-manager" {
   role       = aws_iam_role.project_trust_platform.name
   policy_arn = "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
 }
+
+data "aws_caller_identity" "current" {}
+
+output "aws_account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+
+output "iam_role_arn" {
+  value = aws_iam_role.project_trust_platform.arn
+}
+
+data "aws_vpcs" "application_vpcs" {
+  filter {
+    name   = "tag:Name"
+    values = ["application-vpc"]  # Replace with the name of your application VPC
+  }
+}
+
+data "aws_vpcs" "data_vpcs" {
+  filter {
+    name   = "tag:Name"
+    values = ["data-vpc"]  # Replace with the name of your data VPC
+  }
+}
+
+output "application_vpc_id" {
+  value = data.aws_vpcs.application_vpcs.ids[0]  # Assuming there's only one VPC with this name
+}
+
+output "application_vpc_cidr_block" {
+  value = data.aws_vpcs.application_vpcs.cidr_blocks[0]
+}
+
+output "data_vpc_id" {
+  value = data.aws_vpcs.data_vpcs.ids[0]  # Assuming there's only one VPC with this name
+}
+
+output "data_vpc_cidr_block" {
+  value = data.aws_vpcs.data_vpcs.cidr_blocks[0]
+}
