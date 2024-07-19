@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-southeast-1"
+  region = var.aws_region
 }
 
 # Please check if this matches your platform-policy-new1.json
