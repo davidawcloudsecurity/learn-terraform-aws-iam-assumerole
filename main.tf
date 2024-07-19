@@ -444,5 +444,5 @@ output "data_vpc_id" {
 }
 
 output "data_vpc_cidr_block" {
-  value = data.aws_vpcs.data_vpcs.cidr_block[0]
+  value = data.aws_vpcs.data_vpcs.cidr_blocks[0]
 }
