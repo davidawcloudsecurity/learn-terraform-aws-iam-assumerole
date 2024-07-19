@@ -20,7 +20,7 @@ tfa -var project_account_id=$project_account -var platform_account_id=0129876543
 ```
 Extract CIDR
 ```bash
-app_vpc=$(echo $(terraform output application_vpc_id) | sed 's/"//g'); data_vpc=$(echo $(terraform output data_vpc_id) | sed 's/"//g')
+app_vpc=$(echo $(terraform output application_vpc_id) | sed 's/"//g'); data_vpc=$(echo $(terraform output data_vpc_id) | sed 's/"//g') \
 aws ec2 describe-vpcs --vpc-ids $app_vpc --query 'Vpcs[0].CidrBlock'; aws ec2 describe-vpcs --vpc-ids $data_vpc --query 'Vpcs[0].CidrBlock'
 ```
 Resource - https://spacelift.io/blog/how-to-use-terraform-variables#variable-substitution-using-cli-and-tfvars
