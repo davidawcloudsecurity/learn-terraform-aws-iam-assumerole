@@ -442,7 +442,3 @@ output "application_vpc_id" {
 output "data_vpc_id" {
   value = data.aws_vpcs.data_vpcs.ids[0]  # Assuming there's only one VPC with this name
 }
-
-output "data_vpc_cidr_block" {
-  value = data.aws_vpcs.data_vpcs.cidr_blocks[0]
-}
