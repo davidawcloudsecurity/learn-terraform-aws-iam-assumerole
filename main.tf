@@ -439,14 +439,6 @@ output "application_vpc_id" {
   value = data.aws_vpcs.application_vpcs.ids[0]  # Assuming there's only one VPC with this name
 }
 
-output "application_vpc_cidr_block" {
-  value = data.aws_vpcs.application_vpcs.cidr_block
-}
-
 output "data_vpc_id" {
   value = data.aws_vpcs.data_vpcs.ids[0]  # Assuming there's only one VPC with this name
-}
-
-output "data_vpc_cidr_block" {
-  value = data.aws_vpcs.data_vpcs.ids[0] != null ? element(data.aws_vpcs.data_vpcs.cidr_blocks, 0) : null
 }
