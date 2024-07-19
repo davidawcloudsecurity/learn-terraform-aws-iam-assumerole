@@ -448,5 +448,5 @@ output "data_vpc_id" {
 }
 
 output "data_vpc_cidr_block" {
-  value = data.aws_vpcs.data_vpcs.cidr_block
+  value = data.aws_vpcs.data_vpcs.ids[0] != null ? element(data.aws_vpcs.data_vpcs.cidr_blocks, 0) : null
 }
