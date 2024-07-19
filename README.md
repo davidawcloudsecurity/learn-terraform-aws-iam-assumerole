@@ -16,6 +16,6 @@ tfa -var project_account_id=<project_account_id> -var platform_account_id=<platf
 ```ruby
 project_account=$(aws sts get-caller-identity --query Account --output text)
 echo $project_account
-tfa -var project_account_id=$project_account -var platform_account_id=012987654321 \
+tfa -var project_account_id=$project_account -var platform_account_id=012987654321 -var 'example_tag={agency="abc", project="gen"}'
 ```
 Resource - https://spacelift.io/blog/how-to-use-terraform-variables#variable-substitution-using-cli-and-tfvars
