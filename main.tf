@@ -440,7 +440,7 @@ output "application_vpc_id" {
 }
 
 output "application_vpc_cidr_block" {
-  value = data.aws_vpcs.application_vpcs.cidr_blocks[0]
+  value = data.aws_vpcs.application_vpcs.cidr_block
 }
 
 output "data_vpc_id" {
@@ -448,5 +448,5 @@ output "data_vpc_id" {
 }
 
 output "data_vpc_cidr_block" {
-  value = data.aws_vpcs.data_vpcs.cidr_blocks[0]
+  value = data.aws_vpcs.data_vpcs.cidr_block
 }
