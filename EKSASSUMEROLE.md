@@ -1,3 +1,4 @@
+```bash
 this_account=$(aws sts get-caller-identity --query Account --output text)
 cluster_name=$(aws eks list-clusters --query clusters --output text)
 get_region=$(aws ec2 describe-availability-zones --output text --query 'AvailabilityZones[0].[RegionName]')
@@ -10,3 +11,4 @@ aws configure --profile assume_role set aws_secret_access_key $AWS_SECRET_ACCESS
 aws configure --profile assume_role set aws_session_token $AWS_SESSION_TOKEN
 aws configure --profile assume_role get region
 aws --profile assume_role  eks update-kubeconfig --region $get_region --name $cluster_name
+```
