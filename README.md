@@ -16,7 +16,7 @@ tfa -var project_account_id=<project_account_id> -var platform_account_id=<platf
 ```ruby
 project_account=$(aws sts get-caller-identity --query Account --output text);
 echo $project_account; \
-$platform_account=
+platform_account=
 ```
 ```ruby
 tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}'
