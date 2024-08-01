@@ -436,9 +436,9 @@ data "aws_vpcs" "data_vpcs" {
 }
 
 output "application_vpc_id" {
-  value = data.aws_vpcs.application_vpcs.ids  # Assuming there's only one VPC with this name
+  value = data.aws_vpcs.application_vpcs.ids[0] # Assuming there's only one VPC with this name
 }
 
 output "data_vpc_id" {
-  value = data.aws_vpcs.data_vpcs.ids  # Assuming there's only one VPC with this name
+  value = data.aws_vpcs.data_vpcs.ids[0] # Assuming there's only one VPC with this name
 }
