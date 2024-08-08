@@ -28,3 +28,5 @@ app_vpc=$(echo $(terraform output application_vpc_id) | sed 's/"//g'); data_vpc=
 echo "app cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $app_vpc --query 'Vpcs[0].CidrBlock') | sed 's/"//g')"; echo "data cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $data_vpc --query 'Vpcs[0].CidrBlock') | sed 's/"//g')"
 ```
 Resource - https://spacelift.io/blog/how-to-use-terraform-variables#variable-substitution-using-cli-and-tfvars
+
+How to assign dynamic eks version - https://blog.stackademic.com/create-the-aws-eks-cluster-with-a-managed-node-group-using-custom-launch-templates-185744a0cc79
