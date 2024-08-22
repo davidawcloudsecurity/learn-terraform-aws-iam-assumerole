@@ -14,6 +14,12 @@ variable "platform_account_id" {
   type        = string
 }
 
+variable "project_iam_role" {
+  description = "The AWS account ID where resources will be created."
+  type        = string
+  default     = "project-trust-platform-role"
+}
+
 variable "example_tag" {
   description = "An example tag to apply to resources."
   type        = map(string)
