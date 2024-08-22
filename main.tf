@@ -325,7 +325,7 @@ resource "aws_iam_policy" "platform_policy_sample_04" {
 }
 
 resource "aws_iam_role" "project_trust_platform" {
-  name = "project-trust-platform-role"
+  name = var.project_iam_role
   force_detach_policies = true
   assume_role_policy = jsonencode({
     "Version": "2012-10-17",
