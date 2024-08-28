@@ -1,6 +1,6 @@
 ```bash
 this_account=$(aws sts get-caller-identity --query Account --output text)
-cluster_name=$(aws eks list-clusters --query clusters --output text)
+cluster_name=$(aws eks list-clusters --query clusters[0] --output text)
 region_code=$(aws ec2 describe-availability-zones --output text --query 'AvailabilityZones[0].[RegionName]')
 assume_role="project-trust-platform-role"
 CREDENTIALS=$(aws sts assume-role --role-arn arn:aws:iam::$this_account:role/$assume_role --role-session-name "AssumeRoleSession")
