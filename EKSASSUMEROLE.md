@@ -1,4 +1,5 @@
 ```bash
+#!/bin/bash
 this_account=$(aws sts get-caller-identity --query Account --output text)
 cluster_name=$(aws eks list-clusters --query clusters[0] --output text)
 region_code=$(aws ec2 describe-availability-zones --output text --query 'AvailabilityZones[0].[RegionName]')
