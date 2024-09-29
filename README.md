@@ -12,15 +12,17 @@ sudo yum install -y yum-utils shadow-utils; sudo yum-config-manager --add-repo h
 ```
 
 ## How to Use Terraform Variables: Examples
-tfa -var project_account_id=<project_account_id> -var platform_account_id=<platform_account_id>
+tfa -var project_account_id=<project_account_id> -var platform_account_id=<platform_account_id> -var 'example_tag={agency="abc", project="gen"}' -var proj-trust-plat-role=<example-role>
 ```ruby
 project_account=$(aws sts get-caller-identity --query Account --output text); \
 platform_account="";\
+example_role=""; \
 echo "project: $project_account"; \
-echo "platform: $platform_account"
+echo "platform: $platform_account" \
+echo "platform: $example_role"
 ```
 ```ruby
-tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}'
+tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}' -var 'proj-trust-plat-role=$example_role'
 ```
 Extract CIDR
 ```bash
