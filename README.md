@@ -12,11 +12,13 @@ tfa -var project_account_id=<project_account_id> -var platform_account_id=<platf
 ```ruby
 project_account=$(aws sts get-caller-identity --query Account --output text); \
 platform_account="";\
+example_role=""; \
 echo "project: $project_account"; \
-echo "platform: $platform_account"
+echo "platform: $platform_account" \
+echo "assumeRole: $example_role"
 ```
 ```ruby
-tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}'
+tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}' -var 'project_iam_role=$example_role'
 ```
 Extract CIDR
 ```bash
