@@ -82,7 +82,7 @@ resource "aws_iam_policy_attachment" "attach_example_policy_04" {
 }
 
 resource "aws_iam_policy_attachment" "attach_awsquicksightlistiam" {
-  name       = "project-trust-platform-role"
+  name       = var.project_iam_role
   roles      = [aws_iam_role.project_trust_platform.name]
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSQuickSightListIAM"
 }
