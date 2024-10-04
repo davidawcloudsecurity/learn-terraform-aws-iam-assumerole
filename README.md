@@ -18,7 +18,7 @@ echo "platform: $platform_account" \
 echo "assumeRole: $example_role"
 ```
 ```ruby
-tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}' -var 'project_iam_role=$example_role'
+tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}' -var project_iam_role=$example_role
 ```
 Extract CIDR
 ```bash
