@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 data "aws_iam_policy" "policy-1" {
-  arn = "arn:aws:iam::aws:policy/policy-1"
+  arn = "arn:aws:iam::${var.project_account_id}:policy/policy-1"
 }
 
 data "aws_iam_policy" "policy-2" {
