@@ -7,15 +7,15 @@ data "aws_iam_policy" "policy-1" {
 }
 
 data "aws_iam_policy" "policy-2" {
-  arn = "arn:aws:iam::aws:policy/policy-2"
+  arn = "arn:aws:iam::${var.project_account_id}:policy/policy-2"
 }
 
 data "aws_iam_policy" "policy-3" {
-  arn = "arn:aws:iam::aws:policy/policy-3"
+  arn = "arn:aws:iam::${var.project_account_id}:policy/policy-3"
 }
 
 data "aws_iam_policy" "policy-4" {
-  arn = "arn:aws:iam::aws:policy/policy-4"
+  arn = "arn:aws:iam::${var.project_account_id}:policy/policy-4"
 }
 
 resource "aws_iam_role" "project_trust_platform" {
