@@ -18,12 +18,12 @@ echo "platform: $platform_account"; \
 echo "assumeRole: $example_role"
 ```
 ```ruby
-tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}' -var project_iam_role=$example_role; app_vpc=$(terraform output application_vpc_id) | sed 's/"//g'; data_vpc=$(terraform output data_vpc_id | sed 's/"//g'); \
-echo "app cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $app_vpc --query 'Vpcs[0].CidrBlock') | sed 's/"//g')"; echo "data cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $data_vpc --query 'Vpcs[0].CidrBlock') | sed 's/"//g')"
+tfa -var project_account_id=$project_account -var platform_account_id=$platform_account -var 'example_tag={agency="abc", project="gen"}' -var project_iam_role=$example_role; app_vpc=$(terraform output application_vpc_id | sed 's/"//g'); data_vpc=$(terraform output data_vpc_id | sed 's/"//g'); \
+echo "app cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $app_vpc --query 'Vpcs[0].CidrBlock' | sed 's/"//g'))"; echo "data cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $data_vpc --query 'Vpcs[0].CidrBlock' | sed 's/"//g'))"
 ```
 Extract CIDR
 ```bash
-app_vpc=$(terraform output application_vpc_id) | sed 's/"//g'; data_vpc=$(terraform output data_vpc_id | sed 's/"//g'); \
-echo "app cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $app_vpc --query 'Vpcs[0].CidrBlock') | sed 's/"//g')"; echo "data cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $data_vpc --query 'Vpcs[0].CidrBlock') | sed 's/"//g')"
+app_vpc=$(terraform output application_vpc_id | sed 's/"//g'); data_vpc=$(terraform output data_vpc_id | sed 's/"//g'); \
+echo "app cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $app_vpc --query 'Vpcs[0].CidrBlock' | sed 's/"//g'))"; echo "data cidr: $(echo $(aws ec2 describe-vpcs --vpc-ids $data_vpc --query 'Vpcs[0].CidrBlock' | sed 's/"//g'))"
 ```
 Resource - https://spacelift.io/blog/how-to-use-terraform-variables#variable-substitution-using-cli-and-tfvars
