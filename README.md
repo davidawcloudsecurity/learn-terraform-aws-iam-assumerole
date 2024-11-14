@@ -14,7 +14,7 @@ project_account=$(aws sts get-caller-identity --query Account --output text); \
 platform_account="";\
 example_role=""; \
 echo "project: $project_account"; \
-echo "platform: $platform_account" \
+echo "platform: $platform_account"; \
 echo "assumeRole: $example_role"
 ```
 ```ruby
