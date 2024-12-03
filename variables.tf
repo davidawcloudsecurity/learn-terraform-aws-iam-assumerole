@@ -22,8 +22,5 @@ variable "project_iam_role" {
 variable "example_tag" {
   description = "An example tag to apply to resources."
   type        = map(string)
-  default     = {
-#    agency = "example-resource"
-#    project = "project"
-  }
+  default     = {}
 }
