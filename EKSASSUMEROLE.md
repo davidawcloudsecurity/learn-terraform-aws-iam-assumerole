@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 read -p "Please enter your assume_role: " assume_role
 this_account=$(aws sts get-caller-identity --query Account --output text)
@@ -13,3 +14,5 @@ aws configure --profile assume_role set aws_secret_access_key $AWS_SECRET_ACCESS
 aws configure --profile assume_role set aws_session_token $AWS_SESSION_TOKEN
 aws configure --profile assume_role get region
 aws --profile assume_role  eks update-kubeconfig --region $region_code --name $cluster_name
+export AWS_DEFAULT_PROFILE=assume_role
+```
