@@ -1,6 +1,12 @@
 # learn-terraform-aws-iam-assumerole
 how to create policy with assume role
 
+### How to assumerole with sts and profile
+```bash
+aws sts assume-role --role-arn arn:aws:iam::107513503799:role/AdminRole --role-session-name MySession
+aws configure --profile=example
+aws configure set aws_session_token <SessionToken> --profile=example
+```
 ## https://developer.hashicorp.com/terraform/install
 Install if running at cloudshell
 ```ruby
